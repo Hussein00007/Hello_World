@@ -24,6 +24,8 @@ jobs:
       - image: circleci/node:13.8.0
     # Add steps to the job
     # See: 
+    requires:
+      - say-hello
     steps:
       - checkout
       - run:
