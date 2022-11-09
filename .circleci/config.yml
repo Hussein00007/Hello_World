@@ -1,10 +1,6 @@
 version: 2.1
 
-workflows:
-  test-env-vars:
-    jobs:
-      - save_hello_world_output
-      - Print_Output_File
+
 
 jobs:
   save_hello_world_output:
@@ -19,12 +15,21 @@ jobs:
           root: ~/
           path: output.txt
   
-  Print_Output_File:
+  print_output_file:
     docker:
       - image: circleci/node:13.8.0
     steps: 
       - attach_workspace:
-           at: ~/
+          at: ~/
       - run:
         - name: "Print output txt"
         - command: cat ~/output.txt
+
+
+workflows:
+  test-env-vars:
+    jobs:
+      - save_hello_world_output
+      - print_output_file:
+          requires:
+            - save_hello_world_output
