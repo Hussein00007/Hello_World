@@ -13,8 +13,7 @@ jobs:
       - checkout
       - run:
           name: "echo saving Hello World output txt file"
-          command: |
-            echo "text to output here" > ~/output.txt
+          command: echo "text to output here" > ~/output.txt
       - persist_to_workspace:
           root: ~/
           path: output.txt
@@ -22,10 +21,9 @@ jobs:
   Print_Output_File:
     docker:
       - image: circleci/node:13.8.0
-      steps: 
-        - attach_workspace:
+    steps: 
+      - attach_workspace:
            at: ~/
-        - run:
-            - name: "Print output txt"
-            - command: 
-              cat ~/output.txt
+      - run:
+        - name: "Print output txt"
+        - command: cat ~/output.txt
