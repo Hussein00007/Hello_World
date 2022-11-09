@@ -3,7 +3,8 @@ version: 2.1
 workflows:
   test-env-vars:
     jobs:
-      - build
+      - save_hello_world_output
+      - Print_Output_File
 
 jobs:
   save_hello_world_output:
