@@ -8,7 +8,7 @@ workflows:
 jobs:
   save_hello_world_output:
     docker:
-      - image: cimg/base:2020.01
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - run:
@@ -21,7 +21,7 @@ jobs:
   
   Print_Output_File:
     docker:
-      - image: cimg/base:2020.01
+      - image: circleci/node:13.8.0
       steps: 
         - attach_workspace:
            at: ~/
